@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nama Marching Band Anda - Semangat, Harmoni, Prestasi!</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon"> <style>
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            color: #333;
+            line-height: 1.6;
+            scroll-behavior: smooth; /* Untuk scrolling halus saat klik menu */
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: #222;
+            margin-bottom: 15px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff; /* Contoh warna link */
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #007bff; /* Warna primer */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+            text-decoration: none;
+        }
+
+        .secondary-btn {
+            background-color: #6c757d; /* Warna sekunder */
+        }
+
+        .secondary-btn:hover {
+            background-color: #5a6268;
+        }
+
+        /* Header */
+        header {
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #e2e6ea;
+            padding: 10px 0;
+            position: sticky; /* Agar header tetap di atas saat scroll */
+            top: 0;
+            z-index: 1000; /* Pastikan di atas konten lain */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .logo h1 {
+            font-size: 1.5em;
+            margin: 0;
+            color: #333;
+        }
+
+        .logo a {
+            display: flex;
+            align-items: center;
+            color: inherit;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #333;
+            font-weight: bold;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        /* Hero Section (Home) */
+        #home .hero-section {
+            background: url('images/hero-bg.jpg') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+        }
+
+        #home .hero-content {
+            max-width: 800px;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 30px;
+            border-radius: 8px;
+        }
+
+        #home .hero-content h2 {
+            font-size: 2.8em;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        #home .hero-content p {
+            font-size: 1.2em;
+            margin-bottom: 25px;
+        }
+
+        /* About Us Preview */
+        #home .about-us-preview {
+            text-align: center;
+            padding: 60px 0;
+            background-color: #f0f2f5;
+        }
+
+        #home .about-us-preview h3 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        /* Latest Content (News/Gallery) */
+        #home .latest-content {
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        #home .latest-content h3 {
+            font-size: 2em;
+            margin-bottom: 30px;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            text-align: left;
+        }
+
+        .content-item {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .content-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .content-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .content-item h4 {
+            font-size: 1.3em;
+            padding: 15px;
+            margin-bottom: 0;
+        }
+
+        .content-item p {
+            padding: 0 15px 15px;
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .content-item .read-more {
+            display: block;
+            padding: 10px 15px;
+            background-color: #e9ecef;
+            text-align: center;
+            color: #007bff;
+            font-weight: bold;
+            border-top: 1px solid #eee;
+        }
+
+        .content-item .read-more:hover {
+            background-color: #dee2e6;
+            text-decoration: none;
+        }
+
+        /* Styling untuk halaman members.html (sekarang bagian dari index.html) */
+        #members .hero-section-small {
+            background: url('images/members-banner.jpg') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 250px;
+        }
+
+        #members .hero-section-small .hero-content {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        #members .hero-section-small h2 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        #members .hero-section-small p {
+            font-size: 1.1em;
+            margin-bottom: 0;
+        }
+
+        .members-list {
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .members-list h3 {
+            font-size: 2.2em;
+            margin-bottom: 40px;
+            color: #007bff;
+        }
+
+        /* Styling untuk Kartu Ketua */
+        .member-card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 0 auto 50px auto;
+            max-width: 600px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .member-card img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 4px solid #007bff;
+        }
+
+        .member-card h4 {
+            font-size: 1.8em;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .member-card .position {
+            font-weight: bold;
+            color: #6c757d;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .member-card .bio {
+            font-size: 1em;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        /* Styling untuk Grid Anggota */
+        .member-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .member-slot {
+            background-color: white;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .member-slot:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .member-slot img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+            border: 2px solid #ccc;
+        }
+
+        .member-slot .member-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+            font-size: 1.1em;
+        }
+
+        .member-slot .member-role {
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #343a40;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        footer .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            margin: 0 0 20px 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .footer-links ul li {
+            margin: 0 15px;
+        }
+
+        .footer-links ul li a {
+            color: white;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links ul li a:hover {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .social-media {
+            margin-bottom: 20px;
+        }
+
+        .social-media a img {
+            height: 30px;
+            margin: 0 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .social-media a img:hover {
+            transform: scale(1.1);
+        }
+
+        footer p {
+            font-size: 0.9em;
+            margin-bottom: 0;
+            color: #bbb;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header .container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .logo {
+                margin-bottom: 15px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+
+            #home .hero-content h2, #members .hero-section-small h2 {
+                font-size: 2em;
+            }
+
+            #home .hero-content p, #members .hero-section-small p {
+                font-size: 1em;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .member-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 20px;
+            }
+
+            .member-card {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .member-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .member-card img {
+                width: 120px;
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="#home">
+                    <img src="images/logo-band.png" alt="Logo Marching Band Anda">
+                    <h1>Nama Marching Band Anda</h1>
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="#about-us">Tentang Kami</a></li>
+                    <li><a href="#gallery-news">Galeri & Berita</a></li>
+                    <li><a href="#schedule">Jadwal & Acara</a></li>
+                    <li><a href="#join-us-section">Bergabung</a></li>
+                    <li><a href="#members-section">Anggota Genta Nada Band</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="home">
+            <div class="hero-section">
+                <div class="hero-content">
+                    <h2>Semangat, Harmoni, Prestasi!</h2>
+                    <p>Bersama kami, ukir sejarah musik marching band Indonesia.</p>
+                    <a href="#about-us" class="btn">Pelajari Lebih Lanjut</a>
+                </div>
+            </div>
+
+            <div class="about-us-preview container" id="about-us-preview-home">
+                <h3>Siapa Kami?</h3>
+                <p>Nama Marching Band Anda adalah komunitas marching band yang berdedikasi untuk menciptakan musik berkualitas tinggi dan penampilan yang memukau. Berdiri sejak tahun [Tahun Berdiri], kami telah berpartisipasi dalam berbagai kompetisi nasional dan internasional.</p>
+                <a href="#about-us" class="btn secondary-btn">Baca Selengkapnya</a>
+            </div>
+
+            <div class="latest-content container" id="gallery-news-home">
+                <h3>Berita & Galeri Terbaru</h3>
+                <div class="content-grid">
+                    <div class="content-item">
+                        <img src="images/performance1.jpg" alt="Penampilan Terbaru">
+                        <h4>Juara 1 Kompetisi Nasional Marching Band 2024!</h4>
+                        <p>Kami bangga mengumumkan bahwa tim kami berhasil meraih posisi pertama...</p>
+                        <a href="#gallery-news" class="read-more">Baca Berita</a>
+                    </div>
+                    <div class="content-item">
+                        <img src="images/practice1.jpg" alt="Latihan Rutin">
+                        <h4>Persiapan Intensif Menuju Grand Prix</h4>
+                        <p>Anggota band sedang giat berlatih untuk menghadapi kompetisi berikutnya...</p>
+                        <a href="#gallery-news" class="read-more">Lihat Foto</a>
+                    </div>
+                    <div class="content-item">
+                        <img src="images/members1.jpg" alt="Anggota Band">
+                        <h4>Mengenal Lebih Dekat Skuad Perkusi Kami</h4>
+                        <p>Wawancara eksklusif dengan para pemain perkusi yang energik...</p>
+                        <a href="#members-section" class="read-more">Tonton Video</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about-us" class="container" style="padding: 80px 0; background-color: #f8f9fa;">
+            <h2>Tentang Kami</h2>
+            <p><strong>Nama Marching Band Anda</strong> adalah salah satu marching band terkemuka di [kota/daerah Anda], yang didirikan pada tahun [Tahun Berdiri] dengan misi untuk mengembangkan bakat musikal dan disiplin anggota melalui seni marching band. Kami berpegang pada nilai-nilai persatuan, kerja keras, dan inovasi.</p>
+            <p>Selama bertahun-tahun, kami telah meraih berbagai penghargaan, termasuk [Sebutkan Penghargaan Besar 1], [Sebutkan Penghargaan Besar 2], dan banyak lagi. Kami percaya bahwa setiap anggota adalah bagian integral dari kesuksesan kami, dan kami berkomitmen untuk menyediakan lingkungan yang mendukung pertumbuhan pribadi dan kolektif.</p>
+            <p>Visi kami adalah menjadi representasi terbaik dari semangat marching band di tingkat nasional dan internasional, selalu menghadirkan penampilan yang inspiratif dan tak terlupakan.</p>
+            </section>
+
+        <section id="gallery-news" class="container" style="padding: 80px 0;">
+            <h2>Galeri & Berita</h2>
+            <p>Jelajahi momen-momen terbaik kami, mulai dari persiapan intensif hingga penampilan yang memukau di atas panggung.</p>
+            <div class="content-grid">
+                <div class="content-item">
+                    <img src="images/gallery-item1.jpg" alt="Detail Galeri 1">
+                    <h4>Momen Emas di Kejuaraan Regional</h4>
+                    <p>Lihat foto-foto eksklusif dari kemenangan kami di kejuaraan regional tahun lalu...</p>
+                    <a href="#" class="read-more">Lihat Detail</a>
+                </div>
+                <div class="content-item">
+                    <img src="images/news-item1.jpg" alt="Detail Berita 1">
+                    <h4>Peluncuran Seragam Baru untuk Musim Ini</h4>
+                    <p>Kami bangga memperkenalkan desain seragam terbaru yang akan kami gunakan...</p>
+                    <a href="#" class="read-more">Baca Selengkapnya</a>
+                </div>
+                <div class="content-item">
+                    <img src="images/gallery-item2.jpg" alt="Detail Galeri 2">
+                    <h4>Behind The Scenes: Latihan Perdana Drill Baru</h4>
+                    <p>Intip keseruan dan tantangan di balik layar saat kami mulai melatih drill baru...</p>
+                    <a href="#" class="read-more">Lihat Video</a>
+                </div>
+                </div>
+        </section>
+
+        <section id="schedule" class="container" style="padding: 80px 0; background-color: #f0f2f5;">
+            <h2>Jadwal & Acara</h2>
+            <p>Pantau semua kegiatan Marching Band kami. Jangan lewatkan latihan, penampilan, dan kompetisi!</p>
+            <div class="event-list">
+                <div class="event-item">
+                    <h4>Latihan Rutin</h4>
+                    <p>**Setiap Selasa & Kamis**, 16:00 - 19:00 WIB</p>
+                    <p>Lokasi: Lapangan SMA [Nama SMA/Lokasi Latihan]</p>
+                </div>
+                <div class="event-item">
+                    <h4>Kompetisi Marching Band Tingkat Provinsi</h4>
+                    <p>**Sabtu, 10 Agustus 2025**, 09:00 - Selesai</p>
+                    <p>Lokasi: Stadion [Nama Stadion], [Kota]</p>
+                    <p>Kami akan menampilkan koreografi dan aransemen terbaru kami. Mari dukung kami!</p>
+                </div>
+                <div class="event-item">
+                    <h4>Open House & Audisi Anggota Baru</h4>
+                    <p>**Minggu, 1 September 2025**, 14:00 - 17:00 WIB</p>
+                    <p>Lokasi: Gedung Serbaguna [Nama Gedung]</p>
+                    <p>Ingin bergabung? Datang dan tunjukkan bakatmu!</p>
+                </div>
+                </div>
+        </section>
+
+        <section id="join-us-section" class="container" style="padding: 80px 0;">
+            <h2>Bergabung dengan Kami</h2>
+            <p>Apakah Anda memiliki semangat musik, disiplin, dan keinginan untuk menjadi bagian dari keluarga besar yang berprestasi? Genta Nada Band mencari individu berbakat seperti Anda!</p>
+            <p>Kami menerima anggota baru dari berbagai latar belakang musik, baik yang sudah berpengalaman maupun yang ingin belajar dari nol. Kami menyediakan pelatihan profesional dan lingkungan yang mendukung untuk Anda berkembang.</p>
+            <h4>Manfaat Bergabung:</h4>
+            <ul>
+                <li>Pengembangan Bakat Musikal dan Fisik</li>
+                <li>Pengalaman Kompetisi Tingkat Nasional/Internasional</li>
+                <li>Jaringan Pertemanan yang Kuat dan Kekeluargaan</li>
+                <li>Pengembangan Karakter (Disiplin, Kerja Sama Tim, Kepemimpinan)</li>
+            </ul>
+            <p>Tertarik? Ikuti audisi kami berikutnya atau hubungi kami untuk informasi lebih lanjut.</p>
+            <a href="#contact" class="btn">Daftar Sekarang / Hubungi Kami</a>
+        </section>
+
+        <section id="members-section">
+            <div class="hero-section-small">
+                <div class="hero-content">
+                    <h2>Anggota Genta Nada Band</h2>
+                    <p>Kenali wajah-wajah di balik harmoni dan aksi panggung kami!</p>
+                </div>
+            </div>
+
+            <div class="members-list container">
+                <h3>Kepengurusan Band</h3>
+                <div class="member-card">
+                    <img src="images/nadira.jpg" alt="Foto Nadira xxxx">
+                    <h4>Nadira xxxx</h4>
+                    <p class="position">Ketua Genta Nada Band</p>
+                    <p class="bio">Nadira telah memimpin Genta Nada Band sejak [Tahun], membawa semangat dan dedikasi tinggi untuk setiap penampilan. Dengan visi yang kuat, ia terus mendorong band untuk mencapai prestasi tertinggi.</p>
+                </div>
+
+                <h3>Daftar Anggota</h3>
+                <div class="member-grid">
+                    <div class="member-slot">
+                        <img src="images/member-placeholder.jpg" alt="Foto Anggota">
+                        <p class="member-name">Anggota Nama 1</p>
+                        <p class="member-role">Posisi/Seksi</p>
+                    </div>
+                    <div class="member-slot">
+                        <img src="images/member-placeholder.jpg" alt="Foto Anggota">
+                        <p class="member-name">Anggota Nama 2</p>
+                        <p class="member-role">Posisi/Seksi</p>
+                    </div>
+                    <div class="member-slot">
+                        <img src="images/member-placeholder.jpg" alt="Foto Anggota">
+                        <p class="member-name">Anggota Nama 3</p>
+                        <p class="member-role">Posisi/Seksi</p>
+                    </div>
+                    <div class="member-slot">
+                        <img src="images/member-placeholder.jpg" alt="Foto Anggota">
+                        <p class="member-name">Anggota Nama 4</p>
+                        <p class="member-role">Posisi/Seksi</p>
+                    </div>
+                    <div class="member-slot">
+                        <img src="images/member-placeholder.jpg" alt="Foto Anggota">
+                        <p class="member-name">Anggota Nama 5</p>
+                        <p class="member-role">Posisi/Seksi</p>
+                    </div>
+                    <div class="member-slot">
+                        <img src="images/member-placeholder.jpg" alt="Foto Anggota">
+                        <p class="member-name">Anggota Nama 6</p>
+                        <p class="member-role">Posisi/Seksi</p>
+                    </div>
+                    <div class="member-slot">
+                        <img src="images/member-placeholder.jpg" alt="Foto Anggota">
+                        <p class="member-name">Anggota Nama 7</p>
+                        <p class="member-role">Posisi/Seksi</p>
+                    </div>
+                    <div class="member-slot">
+                        <img src="images/member-placeholder.jpg" alt="Foto Anggota">
+                        <p class="member-name">Anggota Nama 8</p>
+                        <p class="member-role">Posisi/Seksi</p>
+                    </div>
+                    <div class="member-slot">
+                        <img src="images/member-placeholder.jpg" alt="Foto Anggota">
+                        <p class="member-name">Anggota Nama 9</p>
+                        <p class="member-role">Posisi/Seksi</p>
+                    </div>
+                    <div class="member-slot">
+                        <img src="images/member-placeholder.jpg" alt="Foto Anggota">
+                        <p class="member-name">Anggota Nama 10</p>
+                        <p class="member-role">Posisi/Seksi</p>
+                    </div>
+                     <div class="member-slot">
+                        <img src="images/member-placeholder.jpg" alt="Foto Anggota">
+                        <p class="member-name">Anggota Nama 11</p>
+                        <p class="member-role">Posisi/Seksi</p>
+                    </div>
+                    <div class="member-slot">
+                        <img src="images/member-placeholder.jpg" alt="Foto Anggota">
+                        <p class="member-name">Anggota Nama 12</p>
+                        <p class="member-role">Posisi/Seksi</p>
+                    </div>
+                    <div class="member-slot">
+                        <img src="images/member-placeholder.jpg" alt="Foto Anggota">
+                        <p class="member-name">Anggota Nama 13</p>
+                        <p class="member-role">Posisi/Seksi</p>
+                    </div>
+                    <div class="member-slot">
+                        <img src="images/member-placeholder.jpg" alt="Foto Anggota">
+                        <p class="member-name">Anggota Nama 14</p>
+                        <p class="member-role">Posisi/Seksi</p>
+                    </div>
+                    <div class="member-slot">
+                        <img src="images/member-placeholder.jpg" alt="Foto Anggota">
+                        <p class="member-name">Anggota Nama 15</p>
+                        <p class="member-role">Posisi/Seksi</p>
+                    </div>
+                    <div class="member-slot">
+                        <img src="images/member-placeholder.jpg" alt="Foto Anggota">
+                        <p class="member-name">Anggota Nama 16</p>
+                        <p class="member-role">Posisi/Seksi</p>
+                    </div>
+                    <div class="member-slot">
+                        <img src="images/member-placeholder.jpg" alt="Foto Anggota">
+                        <p class="member-name">Anggota Nama 17</p>
+                        <p class="member-role">Posisi/Seksi</p>
+                    </div>
+                    <div class="member-slot">
+                        <img src="images/member-placeholder.jpg" alt="Foto Anggota">
+                        <p class="member-name">Anggota Nama 18</p>
+                        <p class="member-role">Posisi/Seksi</p>
+                    </div>
+                    <div class="member-slot">
+                        <img src="images/member-placeholder.jpg" alt="Foto Anggota">
+                        <p class="member-name">Anggota Nama 19</p>
+                        <p class="member-role">Posisi/Seksi</p>
+                    </div>
+                    <div class="member-slot">
+                        <img src="images/member-placeholder.jpg" alt="Foto Anggota">
+                        <p class="member-name">Anggota Nama 20</p>
+                        <p class="member-role">Posisi/Seksi</p>
+                    </div>
+                    <div class="member-slot">
+                        <img src="images/member-placeholder.jpg" alt="Foto Anggota">
+                        <p class="member-name">Anggota Nama 21</p>
+                        <p class="member-role">Posisi/Seksi</p>
+                    </div>
+                    <div class="member-slot">
+                        <img src="images/member-placeholder.jpg" alt="Foto Anggota">
+                        <p class="member-name">Anggota Nama 22</p>
+                        <p class="member-role">Posisi/Seksi</p>
+                    </div>
+                    <div class="member-slot">
+                        <img src="images/member-placeholder.jpg" alt="Foto Anggota">
+                        <p class="member-name">Anggota Nama 23</p>
+                        <p class="member-role">Posisi/Seksi</p>
+                    </div>
+                    <div class="member-slot">
+                        <img src="images/member-placeholder.jpg" alt="Foto Anggota">
+                        <p class="member-name">Anggota Nama 24</p>
+                        <p class="member-role">Posisi/Seksi</p>
+                    </div>
+                    <div class="member-slot">
+                        <img src="images/member-placeholder.jpg" alt="Foto Anggota">
+                        <p class="member-name">Anggota Nama 25</p>
+                        <p class="member-role">Posisi/Seksi</p>
+                    </div>
+                    <div class="member-slot">
+                        <img src="images/member-placeholder.jpg" alt="Foto Anggota">
+                        <p class="member-name">Anggota Nama 26</p>
+                        <p class="member-role">Posisi/Seksi</p>
+                    </div>
+                    <div class="member-slot">
+                        <img src="images/member-placeholder.jpg" alt="Foto Anggota">
+                        <p class="member-name">Anggota Nama 27</p>
+                        <p class="member-role">Posisi/Seksi</p>
+                    </div>
+                    <div class="member-slot">
+                        <img src="images/member-placeholder.jpg" alt="Foto Anggota">
+                        <p class="member-name">Anggota Nama 28</p>
+                        <p class="member-role">Posisi/Seksi</p>
+                    </div>
+                    <div class="member-slot">
+                        <img src="images/member-placeholder.jpg" alt="Foto Anggota">
+                        <p class="member-name">Anggota Nama 29</p>
+                        <p class="member-role">Posisi/Seksi</p>
+                    </div>
+                    <div class="member-slot">
+                        <img src="images/member-placeholder.jpg" alt="Foto Anggota">
+                        <p class="member-name">Anggota Nama 30</p>
+                        <p class="member-role">Posisi/Seksi</p>
+                    </div>
+                    <div class="member-slot">
+                        <img src="images/member-placeholder.jpg" alt="Foto Anggota">
+                        <p class="member-name">Anggota Nama 31</p>
+                        <p class="member-role">Posisi/Seksi</p>
+                    </div>
+                    <div class="member-slot">
+                        <img src="images/member-placeholder.jpg" alt="Foto Anggota">
+                        <p class="member-name">Anggota Nama 32</p>
+                        <p class="member-role">Posisi/Seksi</p>
+                    </div>
+                    <div class="member-slot">
+                        <img src="images/member-placeholder.jpg" alt="Foto Anggota">
+                        <p class="member-name">Anggota Nama 33</p>
+                        <p class="member-role">Posisi/Seksi</p>
+                    </div>
+                    <div class="member-slot">
+                        <img src="images/member-placeholder.jpg" alt="Foto Anggota">
+                        <p class="member-name">Anggota Nama 34</p>
+                        <p class="member-role">Posisi/Seksi</p>
+                    </div>
+                    <div class="member-slot">
+                        <img src="images/member-placeholder.jpg" alt="Foto Anggota">
+                        <p class="member-name">Anggota Nama 35</p>
+                        <p class="member-role">Posisi/Seksi</p>
+                    </div>
+                    <div class="member-slot">
+                        <img src="images/member-placeholder.jpg" alt="Foto Anggota">
+                        <p class="member-name">Anggota Nama 36</p>
+                        <p class="member-role">Posisi/Seksi</p>
+                    </div>
+                    <div class="member-slot">
+                        <img src="images/member-placeholder.jpg" alt="Foto Anggota">
+                        <p class="member-name">Anggota Nama 37</p>
+                        <p class="member-role">Posisi/Seksi</p>
+                    </div>
+                    <div class="member-slot">
+                        <img src="images/member-placeholder.jpg" alt="Foto Anggota">
+                        <p class="member-name">Anggota Nama 38</p>
+                        <p class="member-role">Posisi/Seksi</p>
+                    </div>
+                    <div class="member-slot">
+                        <img src="images/member-placeholder.jpg" alt="Foto Anggota">
+                        <p class="member-name">Anggota Nama 39</p>
+                        <p class="member-role">Posisi/Seksi</p>
+                    </div>
+                    <div class="member-slot">
+                        <img src="images/member-placeholder.jpg" alt="Foto Anggota">
+                        <p class="member-name">Anggota Nama 40</p>
+                        <p class="member-role">Posisi/Seksi</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="container" style="padding: 80px 0; background-color: #f8f9fa;">
+            <h2>Kontak Kami</h2>
+            <p>Punya pertanyaan, ingin berkolaborasi, atau hanya sekadar ingin menyapa? Jangan ragu untuk menghubungi kami!</p>
+            <div class="contact-info-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; text-align: left;">
+                <div style="background-color: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                    <h4>Alamat Sekretariat</h4>
+                    <p>[Alamat Lengkap Marching Band Anda, misal: Jl. Raya Musik No. 123, Bandung]</p>
+                    <p>Kode Pos: [Kode Pos]</p>
+                </div>
+                <div style="background-color: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                    <h4>Email & Telepon</h4>
+                    <p>Email: <a href="mailto:info@marchingbandanda.com">info@marchingbandanda.com</a></p>
+                    <p>Telepon: <a href="tel:+6281234567890">+62 812-3456-7890</a></p>
+                </div>
+                <div style="background-color: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                    <h4>Ikuti Kami</h4>
+                    <div class="social-media" style="text-align: left; margin-bottom: 0;">
+                        <a href="#" target="_blank"><img src="images/icon-facebook.png" alt="Facebook" style="height: 25px; margin-right: 10px;"></a>
+                        <a href="#" target="_blank"><img src="images/icon-instagram.png" alt="Instagram" style="height: 25px; margin-right: 10px;"></a>
+                        <a href="#" target="_blank"><img src="images/icon-youtube.png" alt="YouTube" style="height: 25px;"></a>
+                    </div>
+                </div>
+            </div>
+            </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <ul>
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="#about-us">Tentang Kami</a></li>
+                    <li><a href="#gallery-news">Galeri & Berita</a></li>
+                    <li><a href="#schedule">Jadwal & Acara</a></li>
+                    <li><a href="#join-us-section">Bergabung</a></li>
+                    <li><a href="#members-section">Anggota</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                </ul>
+            </div>
+            <div class="social-media">
+                <a href="#" target="_blank"><img src="images/icon-facebook.png" alt="Facebook"></a>
+                <a href="#" target="_blank"><img src="images/icon-instagram.png" alt="Instagram"></a>
+                <a href="#" target="_blank"><img src="images/icon-youtube.png" alt="YouTube"></a>
+            </div>
+            <p>&copy; 2025 Nama Marching Band Anda. Semua Hak Dilindungi.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Contoh sederhana untuk menandai link navigasi aktif berdasarkan scroll (opsional)
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('nav ul li a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - document.querySelector('header').offsetHeight; // Kurangi tinggi header
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.href.includes(current)) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
